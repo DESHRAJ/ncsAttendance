@@ -25,39 +25,20 @@ def home(request):
 
 def attendance(request):
 	""" View for the attendance marking """
-		if request.POST:
-			attendList = request.POST.getlist('list')
-			total = userDetails.obejcts.all()
-			j = 0
-			for i in attendList:
-				count = userDetails.objects.get()	 
+	if request.POST:
+		attendList = request.POST.getlist('list')
+		total = userDetails.obejcts.all()
+		j = 0
+		for i in attendList:
+			count = userDetails.objects.get()	 
 	return render_to_response('attendance.html')
 
+# def stats(request):
+# 	""" for showing the tats of every student who is attending the lab as same on github"""
+# 	return render_to_response('stats.html', context_instance = RequestContext(request))
 
-# def greetings(request):
-# 	""" View for the greetings list page """
-# 	return render_to_response('greeting.html')
+# def profile(request):
+# 	"""" To show the individual profile of every nibble member """
+# 	return render_to_response('profile.html')
 
-# def collage(request):
-# 	""" View for the collages page """
-# 	return render_to_response('collages.html')
 
-# def scrapbook(request):
-# 	""" View for the scrapbook page """
-# 	return render_to_response('scrapbook.html')
-
-# def calendar(request):
-# 	""" View for the Calender page """
-# 	return render_to_response('calendar.html')
-
-# def faq(request):
-# 	""" View for the faq page """
-# 	return render_to_response('faq.html')
-
-# def about(request):
-# 	""" View for the about page """
-# 	return render_to_response('aboutus.html')
-
-# def form(request):
-# 	""" View for the registration form page """
-# 	return render_to_response('form.html')
