@@ -15,17 +15,16 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from datetime import datetime,timedelta
-from ncs.models import userDetails
 
+from ncs.models import ncsMembers
 
 import random,string
 
 def home(request):
 	""" View for the home page"""
 	if request.user.is_superuser:
-		return HttpResponseRedirect("/mark")
-	return render_to_response('index.html',context_instance=RequestContext(request))
-
+		return render_to_response('index.html',context_instance=RequestContext(request))
+	return HttpResponse("You are not logged in as SuperUser. <a href='/admin'>Click here </a> for logging in. ")
 def attendance(request):
 	""" View for the attendance marking """
 	if request.POST:
@@ -39,10 +38,15 @@ def attendance(request):
 def addUser(request):
 	""" View for adding a new user to the database """
 	if request.user.is_superuser:
+		print "$$$$$$$$$$$$$$$$$$$$$", request.path
 		if request.POST:
 			name  = request.POST['name']
-			userDetails.objects.create(name = name).save()
-	return render_to_response('addUser.html',context_instance=RequestContext(request))
+			club = request.POST['club']
+			print name
+			print club
+			ncsMembers.objects.create(name = name, club = club).save()
+		return render_to_response('addUser.html',context_instance=RequestContext(request))
+	return redirect('/admin/?next=/add')
 
 # def stats(request):
 # 	""" for showing the tats of every student who is attending the lab as same on github"""
