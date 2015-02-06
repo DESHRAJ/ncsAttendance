@@ -7,9 +7,10 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'ncs.views.home', name='home'),
     url(r'mark', 'ncs.views.attendance', name='attendance'),
+    url(r'add', 'ncs.views.addUser', name='addUser'),
     # url(r'stats', 'ncs.views.stats', name='stats'),
     # url(r'profile', 'ncs.views.profile', name='profile'),
     # url(r'^blog/', include('blog.urls')),
-    
+
     url(r'^admin/', include(admin.site.urls)),
 )

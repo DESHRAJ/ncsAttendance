@@ -15,6 +15,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from datetime import datetime,timedelta
+from ncs.models import userDetails
+
+
 import random,string
 
 def home(request):
@@ -33,6 +36,14 @@ def attendance(request):
 			count = userDetails.objects.get()	 
 	return render_to_response('attendance.html')
 
+def addUser(request):
+	""" View for adding a new user to the database """
+	if request.user.is_superuser:
+		if request.POST:
+			name  = request.POST['name']
+			userDetails.objects.create(name = name).save()
+	return render_to_response('addUser.html',context_instance=RequestContext(request))
+
 # def stats(request):
 # 	""" for showing the tats of every student who is attending the lab as same on github"""
 # 	return render_to_response('stats.html', context_instance = RequestContext(request))
@@ -40,5 +51,3 @@ def attendance(request):
 # def profile(request):
 # 	"""" To show the individual profile of every nibble member """
 # 	return render_to_response('profile.html')
-
-
