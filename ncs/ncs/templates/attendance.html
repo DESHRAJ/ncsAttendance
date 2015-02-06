@@ -6,114 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mark Attendance</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <style>/*
-    .form-control,.form-control:focus,.btn{
-      border-radius:0;
-      box-shadow:none;
-    }
-    label{
-      font-weight:300;
-    }
-    .loginContainer{
-      background-color: #fff;
-      margin:auto;
-      margin-top:8%;
-      max-width:400px;
-      width:100%;
-      padding:20px 20px 15px;
-    }
-    .loginContainer h1{
-      font-size:2em;
-      margin-top:0;
-    }
-    .btn,.btn:hover,.btn:focus{
-      background:#34495E;
-      border:0;
-      display:block;
-      width:100%;
-      max-width:200px;
-      margin:auto;
-    }*/
-    body{
-      background:#333;
-    }
-  </style>
 </head>
 <body>
   <form class="form-horizontal">
 <fieldset>
-<legend>Form Name</legend>
+<legend><center>Mark Attendance of the Membsers present Today</center></legend>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="checkboxes">Multiple Checkboxes</label>
+{% for i in members %}
   <div class="col-md-4">
   <div class="checkbox">
     <label for="checkboxes-0">
-      <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-      Option one
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-1">
-      <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-2">
-      <input type="checkbox" name="checkboxes" id="checkboxes-2" value="3">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-3">
-      <input type="checkbox" name="checkboxes" id="checkboxes-3" value="4">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-4">
-      <input type="checkbox" name="checkboxes" id="checkboxes-4" value="5">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-5">
-      <input type="checkbox" name="checkboxes" id="checkboxes-5" value="6">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-6">
-      <input type="checkbox" name="checkboxes" id="checkboxes-6" value="7">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-7">
-      <input type="checkbox" name="checkboxes" id="checkboxes-7" value="8">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-8">
-      <input type="checkbox" name="checkboxes" id="checkboxes-8" value="9">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-9">
-      <input type="checkbox" name="checkboxes" id="checkboxes-9" value="10">
-      Option two
-    </label>
-  </div>
-  <div class="checkbox">
-    <label for="checkboxes-10">
-      <input type="checkbox" name="checkboxes" id="checkboxes-10" value="11">
-      Option two
-    </label>
+      <input type="checkbox" name="{ i.name }"  value="{ i.name }">
+      { i.name }      
   </div>
   </div>
+  {% endfor %}
 </div>
 
 </fieldset>

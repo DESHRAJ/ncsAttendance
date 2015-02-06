@@ -7,7 +7,7 @@
   <title>Login</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <style>
-    .form-control,.form-control:focus,.btn{
+    ./*form-control,.form-control:focus,.btn{
       border-radius:0;
       box-shadow:none;
     }
@@ -36,28 +36,22 @@
     }
     body{
       background:#333;
-    }
+    }*/
   </style>
 </head>
 <body>
-  <section class="container-fluid">
-    <div class="loginContainer">
-      <h1 class="text-center">Login</h1>
-      <form role="form" method="post" action="">
-        {% csrf_token %}
-        <div class="form-group">
-          <label class="control-label" for="username">Username</label>
-          <input id="username" name="username" type="text" placeholder="username" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label class="control-label" for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="password" class="form-control" required="">
-        </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-primary" value="Login">
-        </div>
-      </form>
-    </div>  
-  </section>
+<br><br><br><br>
+  <div class="col-md-4">
+    <button id="mark" name="mark" class="btn btn-primary" style="color:white;"><a href="/add">Mark Today's Attendance</a></button>
+</div>
+
+  <div class="col-md-4">
+    <button id="stats" name="stats" class="btn btn-primary"><a href="/stats">Stats till now</a></button>
+  </div>
+
+  <div class="col-md-4">
+    <button id="add" name="add" class="btn btn-primary"><a href ='/add'>Add a Nibblite</a></button>
+  </div>
+
 </body>
 </html>
