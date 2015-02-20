@@ -8,22 +8,25 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
-  <form class="form-horizontal">
+  <form class="form-horizontal" method="post" action="/mark">
+  {% csrf_token %}
 <fieldset>
 <legend><center>Mark Attendance of the Membsers present Today</center></legend>
 
 <div class="form-group">
-{% for i in members %}
+{% for i in total %}
   <div class="col-md-4">
   <div class="checkbox">
     <label for="checkboxes-0">
-      <input type="checkbox" name="{ i.name }"  value="{ i.name }">
-      { i.name }      
+      <input type="checkbox" name="list"  value="{{ i.name }}">
+      {{i.name }}      
   </div>
   </div>
   {% endfor %}
 </div>
-
+      <div class="col-md-4">
+        <button id="submitBtn" name="submitBtn" class="btn btn-primary">Submit</button>
+      </div>
 </fieldset>
 </form>
 

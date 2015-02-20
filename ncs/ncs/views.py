@@ -15,9 +15,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from datetime import datetime,timedelta
-
-from ncs.models import ncsMembers
-
+from ncs.models import *
 import random,string
 
 def home(request):
@@ -25,28 +23,31 @@ def home(request):
 	if request.user.is_superuser:
 		return render_to_response('index.html',context_instance=RequestContext(request))
 	return HttpResponse("You are not logged in as SuperUser. <a href='/admin'>Click here </a> for logging in. ")
+
 def attendance(request):
 	""" View for the attendance marking """
-	if request.POST:
-		attendList = request.POST.getlist('list')
-		total = userDetails.obejcts.all()
-		j = 0
-		for i in attendList:
-			count = userDetails.objects.get()	 
-	return render_to_response('attendance.html')
+	if request.user.is_superuser:
+		total = ncsMembers.objects.all()
+		if request.POST:
+			attendList = request.POST.getlist('list')
+			print attendList
+			Attend(name = attendList).save()
+			return HttpResponse("<h2>Today's Attendence has been marked successfully.</h2>")
+		return render_to_response('attendance.html',{'total':total},context_instance = RequestContext(request))
+	return HttpResponse("You are not logged in as SuperUser. <a href='/admin'>Click here </a> for logging in. ")
+
 
 def addUser(request):
 	""" View for adding a new user to the database """
-	if request.user.is_superuser:
-		print "$$$$$$$$$$$$$$$$$$$$$", request.path
-		if request.POST:
-			name  = request.POST['name']
-			club = request.POST['club']
-			print name
-			print club
-			ncsMembers.objects.create(name = name, club = club).save()
-		return render_to_response('addUser.html',context_instance=RequestContext(request))
-	return redirect('/admin/?next=/add')
+# if request.user.is_superuser:
+	if request.POST:
+		name  = request.POST['name']
+		club = request.POST['club']
+		print name
+		print club
+		ncsMembers.objects.create(name = name, club = club).save()
+	return render_to_response('addUser.html',context_instance=RequestContext(request))
+	# return redirect('/admin/?next=/add')
 
 # def stats(request):
 # 	""" for showing the tats of every student who is attending the lab as same on github"""

@@ -59,9 +59,9 @@ WSGI_APPLICATION = 'ncs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ncs1',
+        'NAME': 'attendance',
         'USER':'root',
-        'PASSWORD':'helloworld',
+        'PASSWORD':'ni22le',
     }
 }
 
@@ -89,7 +89,7 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), \
-        'ncs/templates')
+        'ncs/templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
